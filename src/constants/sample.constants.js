@@ -1,0 +1,8 @@
+export default {
+    SET: 'SET_USER',
+    REMOVE: 'REMOVE_USER',
+
+    TEST_REQUEST: 'TEST_REQUEST',
+    TEST_SUCCESS: 'TEST_SUCCESS',
+    TEST_FAILURE: 'TEST_FAILURE'
+};
