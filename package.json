@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "dotenv -e .env.development next dev",
     "build:dev": "dotenv -e .env.development next build",
-    "build:production": "dortenv .env next build",
+    "build:production": "dotenv .env next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.5.2",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18"
