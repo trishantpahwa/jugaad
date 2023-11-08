@@ -10,7 +10,7 @@ datasource db {
 model Repository {
   id     Int  @id @default(autoincrement())
   userID Int
-  User   User @relation(fields: [userID], references: [id])
+  user   User @relation(fields: [userID], references: [id])
 }
 
 model User {
@@ -28,5 +28,5 @@ model User {
   following       String
   privateGists    String
   publicGists     String
-  Repository      Repository[]
+  repository      Repository[]
 }
