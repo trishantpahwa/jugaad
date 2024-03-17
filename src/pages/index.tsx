@@ -41,7 +41,6 @@ export default function Home() {
       setRepositories(data);
     };
     if (user) fetchUserRepos();
-    console.log(user);
   }, [user]);
 
   const code = useRouter().query.code;
