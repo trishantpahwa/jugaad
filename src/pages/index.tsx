@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Home() {
@@ -28,6 +28,20 @@ export default function Home() {
     };
     if (accessToken) fetchUser();
   }, [accessToken]);
+
+  useEffect(() => {
+    const fetchUserRepos = async () => {
+      const response = await fetch("https://api.github.com/user/repos", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+    }
+    if (user) fetchUserRepos();
+    console.log(user)
+  }, [user]);
 
   const code = useRouter().query.code;
 
