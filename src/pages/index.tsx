@@ -15,7 +15,7 @@ export default function Home() {
     localStorage.removeItem("accessToken");
     setAccessToken("");
     setUser(null);
-  }
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -39,9 +39,9 @@ export default function Home() {
       });
       const data = await response.json(); // Add pagination while scrolling => TP | 2024-03-17 15:36:50
       setRepositories(data);
-    }
+    };
     if (user) fetchUserRepos();
-    console.log(user)
+    console.log(user);
   }, [user]);
 
   const code = useRouter().query.code;
@@ -51,9 +51,9 @@ export default function Home() {
       const response = await fetch(`/api/github-oauth-callback?code=${code}`);
       const data = await response.json();
       if (data.success)
-        localStorage.setItem('accessToken', data.data.accessToken);
-      setTimeout(() => window.location.href = '/', 1000);
-    }
+        localStorage.setItem("accessToken", data.data.accessToken);
+      setTimeout(() => (window.location.href = "/"), 1000);
+    };
     if (code) fetchUserAuthorization();
   }, [code]);
 
@@ -63,11 +63,14 @@ export default function Home() {
 
   return (
     <>
-      <div className="w-full h-[100vh] flex justify-center items-center">
+      <div className="flex h-[100vh] w-full items-center justify-center">
         {user === null ? (
-          <div onClick={signIn} className="rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-125 active:scale-75 cursor-pointer github-icon"></div>
+          <div
+            onClick={signIn}
+            className="github-icon transform cursor-pointer rounded-full shadow-lg transition duration-300 ease-in-out hover:scale-125 hover:shadow-xl active:scale-75"
+          ></div>
         ) : (
-          <div className="h-[75vh] w-[75vw] flex flex-col gap-5 justify-center items-center rounded-lg bg-red-100">
+          <div className="flex h-[75vh] w-[75vw] flex-col items-center justify-center gap-5 rounded-lg bg-red-100">
             <h1>Welcome, {user?.name}</h1>
             <h3>Your repositories:</h3>
             <ul>
