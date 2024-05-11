@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background-rgb: 214, 219, 220;
+  --background-rgb: 255, 255, 255;
   --text: 0, 0, 0;
   --github-logo: url("/github-logo.webp");
   --github-logo-animation: url("/github-logo-animation.gif");
@@ -23,6 +23,15 @@
 body {
   color: rgb(var(--text-rgb));
   background: rgb(var(--background-rgb));
+}
+
+input {
+  color: rgb(var(--text-rgb));
+  background-color: rgb(var(--background-rgb));
+}
+
+input:focus {
+  outline: none;
 }
 
 .github-icon {
