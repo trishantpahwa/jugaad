@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { sign } from "jsonwebtoken";
 
 export default async function handler(
   request: NextApiRequest,
@@ -16,17 +17,33 @@ export default async function handler(
       {
         code: code,
         client_id: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
-        client_secret: process.env.GITHUB_CLIENT_SECRET,
+        client_secret: process.env.GITHUB_CLIENT_SECRET
       }
     );
     const accessToken = githubAuthorizationResponse.data
       .split("&")[0]
       .split("=")[1];
 
+    const githubUserResponse = await axios.get("https://api.github.com/user", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+
+    if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET is not defined");
+
+    const jwt = sign(
+      JSON.stringify({
+        username: githubUserResponse.data.login,
+        accessToken: accessToken
+      }),
+      process.env.JWT_SECRET || ""
+    );
+
     return response.status(200).json({
       success: true,
       message: "Logged in successfully",
-      data: { accessToken },
+      data: { jwt, accessToken } // Can add refresh token => TP | 2024-05-17 19:55:55
     });
   } catch (error) {
     console.error(error);
