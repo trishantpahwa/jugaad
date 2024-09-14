@@ -48,22 +48,22 @@ model User {
   Transaction   Transaction[]
 }
 
-model JUGAAD_Projects {
-  id          Int                   @id @default(autoincrement())
+model Projects {
+  id          Int            @id @default(autoincrement())
   repository  String
   username    String
-  createdAt   DateTime              @default(now())
-  Contributor JUGAAD_Contributors[]
+  createdAt   DateTime       @default(now())
+  Contributor Contributors[]
 
   @@unique([repository, username])
 }
 
-model JUGAAD_Contributors {
-  id        Int             @id @default(autoincrement())
+model Contributors {
+  id        Int      @id @default(autoincrement())
   projectID Int
   username  String
-  Project   JUGAAD_Projects @relation(fields: [projectID], references: [id])
-  createdAt DateTime        @default(now())
+  Project   Projects @relation(fields: [projectID], references: [id])
+  createdAt DateTime @default(now())
 
   @@unique([projectID, username])
 }
