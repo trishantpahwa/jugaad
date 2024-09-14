@@ -28,7 +28,7 @@ export default async function handler(
     const username: string = request.body.username;
 
     const { rows } =
-      await sql`INSERT INTO "JUGAAD_Projects" ("repository", "username") VALUES (${repository}, ${username}) RETURNING *;`;
+      await sql`INSERT INTO "Projects" ("repository", "username") VALUES (${repository}, ${username}) RETURNING *;`;
     return response.status(200).json({
       success: true,
       message: `Added ${request.body.repository} for contribution successfully`,

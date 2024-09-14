@@ -26,9 +26,9 @@ export default async function handler(
         message: "Missing repository name or username"
       });
     const { rows: project } =
-      await sql`SELECT "id" FROM "JUGAAD_Projects" WHERE "repository"=${repository} AND "username"=${username};`;
+      await sql`SELECT "id" FROM "Projects" WHERE "repository"=${repository} AND "username"=${username};`;
     const { rows: contributors } =
-      await sql`SELECT * FROM "JUGAAD_Contributors" WHERE "projectID"=${project[0].id};`;
+      await sql`SELECT * FROM "Contributors" WHERE "projectID"=${project[0].id};`;
     return response.status(200).json({
       success: true,
       message: "Fetched contributions successfully",

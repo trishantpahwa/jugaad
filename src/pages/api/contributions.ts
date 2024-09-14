@@ -25,7 +25,7 @@ export default async function handler(
       return response.status(401).json({ message: "Unauthorized" });
 
     const contributions =
-      await sql`SELECT * FROM "JUGAAD_Contributors" INNER JOIN "JUGAAD_Projects" ON "JUGAAD_Contributors"."projectID" = "JUGAAD_Projects"."id" WHERE "JUGAAD_Projects"."username"=${decryptedJWT.username};`;
+      await sql`SELECT * FROM "Contributors" INNER JOIN "Projects" ON "Contributors"."projectID" = "Projects"."id" WHERE "Projects"."username"=${decryptedJWT.username};`;
 
     return response.status(200).json({
       success: true,

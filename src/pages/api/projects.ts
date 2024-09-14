@@ -19,7 +19,7 @@ export default async function handler(
     ) as JwtPayload;
     if (!decryptedJWT)
       return response.status(401).json({ message: "Unauthorized" });
-    const { rows: projects } = await sql`SELECT * FROM "JUGAAD_Projects"`;
+    const { rows: projects } = await sql`SELECT * FROM "Projects"`;
     return response.status(200).json({
       success: true,
       message: "Fetched projects successfully",

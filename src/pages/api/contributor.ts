@@ -41,14 +41,14 @@ export default async function handler(
       });
 
     const project = await sql`
-        SELECT * FROM "JUGAAD_Projects" WHERE "username" = ${username} AND "repository" = ${repository};
+        SELECT * FROM "Projects" WHERE "username" = ${username} AND "repository" = ${repository};
       `;
 
     if (project.rowCount === 0)
       return response.status(404).json({ message: "Project not found" });
 
     const contributor = await sql`
-        INSERT INTO "JUGAAD_Contributors" ("projectID", "username")
+        INSERT INTO "Contributors" ("projectID", "username")
         VALUES (${project.rows[0].id}, ${decryptedJWT.username})
         RETURNING *
         `;
