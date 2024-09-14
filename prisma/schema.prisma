@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+}
+
+model Recharge {
+  id        Int      @id @default(autoincrement())
+  userID    Int
+  amount    Float
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userID], references: [id])
+}
+
+model Token {
+  id        Int      @id @default(autoincrement())
+  userID    Int
+  token     String
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userID], references: [id])
+}
+
+model Transaction {
+  id            Int      @id @default(autoincrement())
+  aadhaarNumber String
+  userID        Int
+  api           String
+  success       Boolean
+  amount        Float
+  createdAt     DateTime @default(now())
+  User          User     @relation(fields: [userID], references: [id])
+}
+
+model User {
+  id            Int           @id @default(autoincrement())
+  email         String?
+  name          String?
+  aadhaarNumber String        @unique
+  phoneNumber   String?
+  wallet        Float
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @default(now())
+  Recharge      Recharge[]
+  Token         Token[]
+  Transaction   Transaction[]
+}
+
+model Projects {
+  id          Int            @id @default(autoincrement())
+  repository  String
+  username    String
+  createdAt   DateTime       @default(now())
+  Contributor Contributors[]
+
+  @@unique([repository, username])
+}
+
+model Contributors {
+  id        Int      @id @default(autoincrement())
+  projectID Int
+  username  String
+  Project   Projects @relation(fields: [projectID], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([projectID, username])
+}

@@ -3,26 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --background-rgb: 214, 219, 220;
-  --text: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  --text-rgb: 0, 0, 0;
   --github-logo: url("/github-logo.webp");
   --github-logo-animation: url("/github-logo-animation.gif");
-  --shadow: 80, 80, 80;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background-rgb: 0, 0, 0;
-    --text: 214, 219, 220;
+    --text-rgb: 255, 255, 255;
     --github-logo: url("/github-logo-dark.webp");
     --github-logo-animation: url("/github-logo-animation-dark.gif");
-    --shadow: 200, 200, 200;
   }
 }
 
 body {
   color: rgb(var(--text-rgb));
   background: rgb(var(--background-rgb));
+}
+
+input {
+  color: rgb(var(--text-rgb));
+  background-color: rgb(var(--background-rgb));
+}
+
+input:focus {
+  outline: none;
 }
 
 .github-icon {

@@ -1,40 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Jugaad
 
-## Getting Started
+Jugaad is a web application that aims to provide a platform for people to share their ideas and projects. The project is built using Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Scripts
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Scripts to use the project:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run dev`: To run the development server.
+`npm run build`: To build the project.
+`npm start`: To run the development server.
+`npm run lint`: To lint the project.
+`npm run format`: To indicate the formatting of the project.
+`npm run format:fix`: To format the project files to the correct format.
+`npm run prepare`: To prepare git hooks.
+`npm test`: To run the tests.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+To-Do:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- A user can list their projects from GitHub. [*] (ls --self)
+- A user can select their projects to put for contribution. [*] (add-for-contribution <project>)
+- A user can list projects that are put up for contribution by other users. [*] (ls)
+- A user can select a project to contribute to. [*] (contribute <project>)
+- A user can see the list of contributors for a project. [*] (contributors <user>/<project>)
+- A user can see the list projects listed for contribution. [*] (contributions)
+- A user can see the list of projects they are contributing to. (contributions --self)
+- A user can remove their project from the list of projects if it is listed for contribution. [*] (rm <user>/<project>)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Add help commands to README.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Tag projects with the languages and they are written in, the frameworks they use, their platforms, and their licenses(???).
 
-## Learn More
+Create a documentation for the ReST APIs, so that developers can make HTTP requests on the server. Also, the APIs should be made accessible publically.
 
-To learn more about Next.js, take a look at the following resources:
+Check if the responses from APIs to be using the success or status code as 200.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Add command for ctrl + c.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Check `isAuthenticated` for the commands that require authentication.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Add CLI frontend for the project.
