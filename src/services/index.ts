@@ -3,14 +3,14 @@ import {
   logout,
   listMyOwnRepositories,
   fetchUserAuthorization,
-  fetchUser
+  fetchUser,
 } from "./user.services";
 import {
   contributeToProject,
   openProjectIssues,
   addForContribution,
   listProjectsThatIHaveContributedTo,
-  listProjectsAvailableForContribution
+  listProjectsAvailableForContribution,
 } from "./project.services";
 import { listContributors } from "./contributors.services";
 import { clearHistory } from "./history.services";
@@ -27,5 +27,5 @@ export {
   listMyOwnRepositories,
   fetchUserAuthorization,
   fetchUser,
-  listProjectsAvailableForContribution
+  listProjectsAvailableForContribution,
 };

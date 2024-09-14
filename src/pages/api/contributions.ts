@@ -30,8 +30,8 @@ export default async function handler(
     return response.status(200).json({
       success: true,
       data: {
-        contributions: contributions.rows
-      }
+        contributions: contributions.rows,
+      },
     });
   } catch (error) {
     console.error(error);

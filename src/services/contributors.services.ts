@@ -8,8 +8,8 @@ const listContributors = async (
     {
       headers: {
         method: "GET",
-        Authorization: `Bearer ${jwt}`
-      }
+        Authorization: `Bearer ${jwt}`,
+      },
     }
   );
   const data = await response.json();

@@ -11,6 +11,6 @@ export default function generateHelpText() {
     "logout - Log out",
     "open <repository> - Open the issues page of a repository",
     "add-for-contribution <repository> - Add a repository for contribution",
-    "help - Display this help text"
+    "help - Display this help text",
   ];
 }

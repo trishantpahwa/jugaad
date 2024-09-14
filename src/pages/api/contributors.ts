@@ -23,7 +23,7 @@ export default async function handler(
     const username: string = request.query.username as string;
     if (!repository || !username)
       return response.status(422).json({
-        message: "Missing repository name or username"
+        message: "Missing repository name or username",
       });
     const { rows: project } =
       await sql`SELECT "id" FROM "Projects" WHERE "repository"=${repository} AND "username"=${username};`;
@@ -33,8 +33,8 @@ export default async function handler(
       success: true,
       message: "Fetched contributions successfully",
       data: {
-        contributors: contributors
-      }
+        contributors: contributors,
+      },
     });
   } catch (error) {
     console.error(error);

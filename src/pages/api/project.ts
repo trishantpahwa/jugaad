@@ -21,7 +21,7 @@ export default async function handler(
       return response.status(401).json({ message: "Unauthorized" });
     if (!request.body.repository || !request.body.username)
       return response.status(422).json({
-        message: "Missing repository name or user's name"
+        message: "Missing repository name or user's name",
       });
 
     const repository: string = request.body.repository;
@@ -33,8 +33,8 @@ export default async function handler(
       success: true,
       message: `Added ${request.body.repository} for contribution successfully`,
       data: {
-        project: rows[0]
-      }
+        project: rows[0],
+      },
     });
   } catch (error) {
     console.error(error);

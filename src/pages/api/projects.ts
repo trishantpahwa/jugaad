@@ -24,8 +24,8 @@ export default async function handler(
       success: true,
       message: "Fetched projects successfully",
       data: {
-        projects
-      }
+        projects,
+      },
     });
   } catch (error) {
     console.error(error);

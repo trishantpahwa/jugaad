@@ -30,14 +30,14 @@ export default async function handler(
     if (!username || !repository)
       return response.status(422).json({
         success: false,
-        message: "Missing repository username or repository"
+        message: "Missing repository username or repository",
       });
 
     if (username === decryptedJWT.username)
       // Check for server-side to avoid API access from external source => TP | 2024-06-06 16:56:48
       return response.status(401).json({
         success: false,
-        message: "You are the owner of the project"
+        message: "You are the owner of the project",
       });
 
     const project = await sql`
@@ -56,8 +56,8 @@ export default async function handler(
       success: true,
       message: `Added user as a contributor to ${project.rows[0].name} successfully`,
       data: {
-        contributor: contributor.rows[0]
-      }
+        contributor: contributor.rows[0],
+      },
     });
   } catch (error) {
     console.error(error);
