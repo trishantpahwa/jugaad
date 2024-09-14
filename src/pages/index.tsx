@@ -57,7 +57,8 @@ export default function Home() {
               output = "";
               break;
             case "ls":
-              if (!isAuthenticated()) return ["Please login to view available projects"];
+              if (!isAuthenticated())
+                return ["Please login to view available projects"];
               if (args.length > 0) {
                 switch (args[0]) {
                   case "--self":
@@ -204,7 +205,7 @@ export default function Home() {
     setUser(null);
   };
 
-  const isAuthenticated = () => user ? true : false;
+  const isAuthenticated = () => (user ? true : false);
 
   const addForContribution = async (repository: any) => {
     const _repository = repositories.self.find(

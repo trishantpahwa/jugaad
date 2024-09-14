@@ -15,50 +15,56 @@ describe("Test the APIs of the web application.", () => {
   });
 
   it("PUT /project", async () => {
-    const response = await put(`${BASE_URL}project`, {
-      username: "trishantpahwa",
-      repository: "express-generator"
-    }, {
-      headers: {
-        "Authorization": `Bearer ${tokens.jwt}`
-      }
-    });
-    assert.equal(response.data.success, true);
-  });
-  it("GET /projects", async () => {
-    const response = await get(`${BASE_URL}projects`, {
-      headers: {
-        "Authorization": `Bearer ${tokens.jwt}`
-      }
-    });
-    assert.equal(response.data.success, true);
-  });
-  it("GET /contributions", async () => {
-    const response = await get(`${BASE_URL}contributions`,
+    const response = await put(
+      `${BASE_URL}project`,
+      {
+        username: "trishantpahwa",
+        repository: "express-generator"
+      },
       {
         headers: {
-          "Authorization": `Bearer ${tokens.jwt}`
+          Authorization: `Bearer ${tokens.jwt}`
         }
       }
     );
     assert.equal(response.data.success, true);
   });
-  it("PUT /contributor", async () => {
-    const response = await put(`${BASE_URL}contributor`, {
-      username: "trishantpahwa",
-      repository: "express-generator"
-    }, {
+  it("GET /projects", async () => {
+    const response = await get(`${BASE_URL}projects`, {
       headers: {
-        "Authorization": `Bearer ${tokens.jwt}`
+        Authorization: `Bearer ${tokens.jwt}`
       }
     });
+    assert.equal(response.data.success, true);
+  });
+  it("GET /contributions", async () => {
+    const response = await get(`${BASE_URL}contributions`, {
+      headers: {
+        Authorization: `Bearer ${tokens.jwt}`
+      }
+    });
+    assert.equal(response.data.success, true);
+  });
+  it("PUT /contributor", async () => {
+    const response = await put(
+      `${BASE_URL}contributor`,
+      {
+        username: "trishantpahwa",
+        repository: "express-generator"
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${tokens.jwt}`
+        }
+      }
+    );
     console.log(response.data);
     // assert.equal(response.data.success, true);
   });
   it("GET /contributors", async () => {
     const response = await get(`${BASE_URL}contributors`, {
       headers: {
-        "Authorization": `Bearer ${tokens.jwt}`
+        Authorization: `Bearer ${tokens.jwt}`
       }
     });
     assert.equal(response.data.success, true);
