@@ -24,6 +24,7 @@ To-Do:
 - A user can see the list of contributors for a project. [*] (contributors <user>/<project>)
 - A user can see the list projects listed for contribution. [*] (contributions)
 - A user can see the list of projects they are contributing to. (contributions --self)
+- A user can remove their project from the list of projects if it is listed for contribution. [*] (rm <user>/<project>)
 
 Add help commands to README.
 
@@ -34,3 +35,7 @@ Create a documentation for the ReST APIs, so that developers can make HTTP reque
 Check if the responses from APIs to be using the success or status code as 200.
 
 Add command for ctrl + c.
+
+Check `isAuthenticated` for the commands that require authentication.
+
+Add CLI frontend for the project.
