@@ -204,7 +204,6 @@ export default function Home() {
     setAccessToken("");
     setUser(null);
   };
-
   const isAuthenticated = () => (user ? true : false);
 
   const addForContribution = async (repository: any) => {
@@ -245,6 +244,7 @@ export default function Home() {
 
   const listProjectsAvailableForContribution = async () => {
     if (!user) return ["Please login to view available projects"];
+
     if (repositories.available.length > 0) return repositories.available;
     else {
       const response = await fetch("/api/projects", {
