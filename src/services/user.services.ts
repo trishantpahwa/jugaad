@@ -13,8 +13,8 @@ const listMyOwnRepositories = async (accessToken: string) => {
     "https://api.github.com/user/repos?per_page=100&page=1&visibility=all", // Loop through all pages => TP | 2024-05-18 21:04:02
     {
       headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
+        Authorization: `Bearer ${accessToken}`,
+      },
     }
   );
   const data = await response.json();
@@ -36,8 +36,8 @@ const fetchUserAuthorization = async (code: string) => {
 const fetchUser = async (accessToken: string) => {
   const response = await fetch("https://api.github.com/user", {
     headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
+      Authorization: `Bearer ${accessToken}`,
+    },
   });
   if (response.status !== 200) {
     localStorage.removeItem("accessToken");
@@ -54,5 +54,5 @@ export {
   logout,
   listMyOwnRepositories,
   fetchUserAuthorization,
-  fetchUser
+  fetchUser,
 };

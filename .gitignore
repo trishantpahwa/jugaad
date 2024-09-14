@@ -38,5 +38,6 @@ next-env.d.ts
 
 .vscode
 
+# Remove once tested
 temporary-account-for-github.txt
 tokens.json

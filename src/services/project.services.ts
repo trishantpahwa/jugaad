@@ -7,12 +7,12 @@ const contributeToProject = async (
     method: "PUT",
     body: JSON.stringify({
       username,
-      repository
+      repository,
     }),
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${jwt}`
-    }
+      Authorization: `Bearer ${jwt}`,
+    },
   });
   const data = await response.json();
   if (data.success) return ["Contributed successfully"];
@@ -33,12 +33,12 @@ const addForContribution = async (
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${jwt}`
+      Authorization: `Bearer ${jwt}`,
     },
     body: JSON.stringify({
       repository: repository,
-      username: username
-    })
+      username: username,
+    }),
   });
   if (response.status === 200) {
     const data = await response.json();
@@ -51,8 +51,8 @@ const listProjectsThatIHaveContributedTo = async (jwt: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${jwt}`
-    }
+      Authorization: `Bearer ${jwt}`,
+    },
   });
   const data = await response.json();
   if (data.contributions.length > 0) return data.data.contributions;
@@ -64,8 +64,8 @@ const listProjectsAvailableForContribution = async (jwt: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${jwt}`
-    }
+      Authorization: `Bearer ${jwt}`,
+    },
   });
   const data = await response.json();
   if (data.data.projects.length > 0) {
@@ -78,5 +78,5 @@ export {
   openProjectIssues,
   addForContribution,
   listProjectsThatIHaveContributedTo,
-  listProjectsAvailableForContribution
+  listProjectsAvailableForContribution,
 };

@@ -11,7 +11,7 @@ import {
   listProjectsThatIHaveContributedTo,
   login,
   logout,
-  openProjectIssues
+  openProjectIssues,
 } from "@/services";
 import { generateHelpText, generateTextArt } from "@/utils";
 import { useRouter } from "next/router";
@@ -32,7 +32,7 @@ export default function Home() {
   );
   const [repositories, setRepositories] = useState<IProjects>({
     self: [],
-    available: []
+    available: [],
   });
 
   const isAuthenticated = () => (user ? true : false);
@@ -66,7 +66,7 @@ export default function Home() {
                       setRepositories((_: IProjects) => {
                         return {
                           ..._,
-                          self: _repositories
+                          self: _repositories,
                         };
                       });
                     output = _repositories.map(
@@ -93,7 +93,7 @@ export default function Home() {
                   setRepositories((_: IProjects) => {
                     return {
                       ..._,
-                      available: _projects
+                      available: _projects,
                     };
                   });
                   output = [
@@ -101,7 +101,7 @@ export default function Home() {
                     ..._projects.map(
                       (repository: any) =>
                         `${repository.username} ${repository.repository}`
-                    )
+                    ),
                   ];
                 }
               }
@@ -184,8 +184,8 @@ export default function Home() {
           {
             command: `${prompt} ${_input} ${args.join(" ")}`,
             args: args,
-            output: output
-          }
+            output: output,
+          },
         ]);
         clearInput();
         break;
