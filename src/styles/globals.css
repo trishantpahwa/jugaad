@@ -4,19 +4,17 @@
 
 :root {
   --background-rgb: 255, 255, 255;
-  --text: 0, 0, 0;
+  --text-rgb: 0, 0, 0;
   --github-logo: url("/github-logo.webp");
   --github-logo-animation: url("/github-logo-animation.gif");
-  --shadow: 80, 80, 80;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background-rgb: 0, 0, 0;
-    --text: 214, 219, 220;
+    --text-rgb: 255, 255, 255;
     --github-logo: url("/github-logo-dark.webp");
     --github-logo-animation: url("/github-logo-animation-dark.gif");
-    --shadow: 200, 200, 200;
   }
 }
 

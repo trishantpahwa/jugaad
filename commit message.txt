@@ -1,0 +1,17 @@
+Following changes:
+    - Added packages:
+        - `prisma`
+        - `postgres`
+        - `jsonwebtoken`
+        - `mocha`
+    - Designed a schema for the database.
+    - Added a logo animation.
+    - Updated interfaces.
+    - Added commands to store and retrieve data about projects that are being contributed to using the application.
+    - Added following paths to APIs:
+        = `/api/project`
+        = `/api/projects`
+        = `/api/contributor`
+        = `/api/contributors`
+    - Updated `/api/github-auth-callback` to create a custom jwt token.
+    - Added a component for animation.
