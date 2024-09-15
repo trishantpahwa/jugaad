@@ -211,6 +211,10 @@ export default function Home() {
 
   useEffect(() => {
     setHistoryScrollIndex((_) => history.length - 1);
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
   }, [history]);
 
   useEffect(() => {

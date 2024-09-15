@@ -31,7 +31,7 @@ export default async function handler(
       await sql`SELECT * FROM "Contributors" WHERE "projectID"=${project[0].id};`;
     return response.status(200).json({
       success: true,
-      message: "Fetched contributions successfully",
+      message: "Fetched contributors successfully",
       data: {
         contributors: contributors,
       },
