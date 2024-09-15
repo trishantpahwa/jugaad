@@ -166,7 +166,6 @@ export default function Home() {
               );
             break;
           case "login":
-            alert("Logging in");
             login();
             break;
           case "logout":
