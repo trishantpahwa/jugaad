@@ -61,7 +61,10 @@ export default function Home() {
             if (args.length > 0) {
               switch (args[0]) {
                 case "--self":
-                  if (repositories.self.length > 0) return repositories.self;
+                  if (repositories.self.length > 0)
+                    output = repositories.self.map(
+                      (repository: any) => repository.name
+                    );
                   else {
                     const _repositories =
                       await listMyOwnRepositories(accessToken);
@@ -211,6 +214,10 @@ export default function Home() {
 
   useEffect(() => {
     setHistoryScrollIndex((_) => history.length - 1);
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
   }, [history]);
 
   useEffect(() => {
