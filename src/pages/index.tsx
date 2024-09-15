@@ -1,4 +1,4 @@
-import { KeyboardEventHandler, useEffect, useState } from "react";
+import { KeyboardEventHandler, useCallback, useEffect, useState } from "react";
 import { IHistory, IProjects } from "@/interfaces";
 import {
   addForContribution,
@@ -15,12 +15,12 @@ import {
 } from "@/services";
 import { generateHelpText, generateTextArt } from "@/utils";
 import { useRouter } from "next/router";
-import { getAuth } from "@/providers";
+import { useGetAuth } from "@/providers";
 
 export default function Home() {
   const code = useRouter().query.code;
 
-  const auth = getAuth();
+  const auth = useGetAuth();
 
   const [history, setHistory] = useState<IHistory[]>([]);
   const [userAgent, setUserAgent] = useState("");
@@ -38,7 +38,7 @@ export default function Home() {
     available: [],
   });
 
-  const isAuthenticated = () => (user ? true : false);
+  const isAuthenticated = useCallback(() => (user ? true : false), [user]);
 
   const clearInput = () => setInput("");
 
@@ -221,7 +221,8 @@ export default function Home() {
 
   useEffect(() => {
     var _fetchUser = fetchUser;
-    if (!isAuthenticated() && accessToken) {
+    var _isAuthenticated = isAuthenticated;
+    if (!_isAuthenticated() && accessToken) {
       _fetchUser(accessToken)
         .then((data) => {
           setUser(data);
@@ -230,7 +231,7 @@ export default function Home() {
           console.log("Error: Unable to fetch user......." + error)
         );
     }
-  }, [accessToken]);
+  }, [accessToken, isAuthenticated]);
 
   useEffect(() => {
     if (user) {
