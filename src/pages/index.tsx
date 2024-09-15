@@ -15,9 +15,12 @@ import {
 } from "@/services";
 import { generateHelpText, generateTextArt } from "@/utils";
 import { useRouter } from "next/router";
+import { getAuth } from "@/providers";
 
 export default function Home() {
   const code = useRouter().query.code;
+
+  const auth = getAuth();
 
   const [history, setHistory] = useState<IHistory[]>([]);
   const [userAgent, setUserAgent] = useState("");
@@ -236,14 +239,14 @@ export default function Home() {
   }, [user]);
 
   useEffect(() => {
+    if (auth.accessToken) setAccessToken(auth.accessToken);
+    if (auth.jwt) setJWT(auth.jwt);
+  }, [auth]);
+
+  useEffect(() => {
     var _generateTextArt = generateTextArt;
-    function setLoginSession() {
-      setAccessToken(localStorage.getItem("accessToken") ?? ""); // Might need just one of this => TP | 2024-09-14 15:36:58
-      setJWT(localStorage.getItem("jwt") ?? ""); // Might need just one of this => TP | 2024-09-14 15:36:56
-    }
     _generateTextArt(setTextArt);
     if (window) setUserAgent(window.navigator.userAgent);
-    setLoginSession(); // Unwrap this function, if needed => TP | 2024-09-14 15:36:32
   }, []);
 
   return (
