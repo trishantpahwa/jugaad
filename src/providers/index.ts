@@ -1,3 +1,3 @@
-import { getAuth } from "./auth.provider";
+import { useGetAuth } from "./auth.provider";
 
-export { getAuth };
+export { useGetAuth };
