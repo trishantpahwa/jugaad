@@ -25,7 +25,6 @@ const listMyOwnRepositories = async (accessToken: string) => {
 const fetchUserAuthorization = async (code: string) => {
   const response = await fetch(`/api/github-oauth-callback?code=${code}`);
   const data = await response.json();
-  console.log(data);
   if (data.success) {
     localStorage.setItem("accessToken", data.data.accessToken);
     localStorage.setItem("jwt", data.data.jwt);
