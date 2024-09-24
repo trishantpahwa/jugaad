@@ -13,7 +13,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "@prisma/client": "^5.13.0",
+    "@prisma/client": "^5.19.1",
     "@types/jsonwebtoken": "^9.0.6",
     "@vercel/postgres": "^0.8.0",
     "axios": "^1.6.7",
